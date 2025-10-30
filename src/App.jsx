@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [fact, setFact] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  // Write a function that fetches data from the API 
+  // API : https://uselessfacts.jsph.pl/random.json?language=en
+  // use fetch (), .then(res => res.json()), .then(data => ...)
+  const fetchFact = () => {
+    // TODO: write fetch logic here
+  };
+
+  useEffect(() => {
+    // TODO : call fetchFact()
+
+  }, []);
+
+  return (<div style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "100vh",
+      fontFamily: "sans-serif",
+      textAlign: "center",
+      padding: "2rem"
+    }}>
+      <h2>🧠 Random Fact Generator</h2>
+      {loading ? <p>Loading...</p> : <p>{fact}</p>}
+      <button
+        onClick={fetchFact}
+        style={{
+          marginTop: "1rem",
+          padding: "0.75rem 1.5rem",
+          background: "#4e89ff",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer",
+        }}
+      >
+        Get Another Fact
+      </button>
+    </div>
+  );
+    
+  
 }
-
-export default App
