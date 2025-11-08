@@ -9,11 +9,14 @@ export default function App() {
   // use fetch (), .then(res => res.json()), .then(data => ...)
   const fetchFact = () => {
     // TODO: write fetch logic here
+    fetch("https://uselessfacts.jsph.pl/random.json?language=en")
+     .then((res) => res.json())
+     .then((data) => {setFact(data.text); setLoading(false);})
   };
 
   useEffect(() => {
     // TODO : call fetchFact()
-
+    fetchFact();
   }, []);
 
   return (<div style={{
@@ -33,7 +36,7 @@ export default function App() {
         style={{
           marginTop: "1rem",
           padding: "0.75rem 1.5rem",
-          background: "#4e89ff",
+          background: "#ff4ee7ff",
           color: "white",
           border: "none",
           borderRadius: "6px",
